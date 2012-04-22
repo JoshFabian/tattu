@@ -1,7 +1,6 @@
-Rails Prelaunch Signup
-========================
+Tattu.me prelaunch script
+=========================
 
+This script will allow users to input their email address on the 'prelaunch' page of http://www.tattu.me
 
-________________________
-
-License
+Utilizing 'Devise' for the prelaunch signup application, I can use the same user database for the post launch application.
