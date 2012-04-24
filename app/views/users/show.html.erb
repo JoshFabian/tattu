@@ -1,0 +1,22 @@
+<p>User: <%= @user.name %> </p>
+<p>Email: <%= @user.email if @user.email %></p>
+<h1>Upload Shot:</h1>
+<br />
+
+<%= form_for(@shot, :html => { :multipart => true }) do |form| %>
+  <%= form.file_field :photo %>
+  <%= form.text_field :title %>
+  <%= form.submit %>
+<% end %>
+
+<ul>
+  <% @shots.each do |shot| %>
+  <li><%= link_to shot.title, shot_path(shot) %></li>
+  <li><%= link_to image_tag(shot.photo.url(:medium)), shot_path(shot) %></li>
+  <li><%= link_to 'Edit', edit_shot_path(shot) %> or <%= link_to "Delete", shot, :method => :delete %>
+  <% end %>
+</ul> 
+
+<% if @shots.empty? %>
+  <em>This user hasn't uploaded any shots! :(</em>
+<% end %> 

@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @shots = @user.shots
+    @shot = Shot.new
   end
 
 end
