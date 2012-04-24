@@ -6,4 +6,5 @@ RailsPrelaunchSignup::Application.routes.draw do
   devise_for :users
   resources :users, :only => [:show, :index]
   resources :shots
+  resources :upload, :only => [:show, :index] 
 end

@@ -23,10 +23,18 @@ class ShotsController < ApplicationController
     redirect_to :back, :notice => "Shot was deleted!"
   end
    
-  def update_all
-    @shot = Shot.find(params[:shot])
-    @shot.update
-    redirect_to :back, :notice => "Shot was updated!"
-  end
+  def update
+     @shot = Shot.find(params[:id])
+
+     respond_to do |format|
+       if @shot.update_attributes(params[:shot])
+         format.html { redirect_to @shot, notice: 'Shot was successfully updated.' }
+         format.json { head :no_content }
+       else
+         format.html { render action: "edit" }
+         format.json { render json: @shot.errors, status: :unprocessable_entity }
+       end
+     end
+   end
   
 end
